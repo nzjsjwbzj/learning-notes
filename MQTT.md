@@ -367,7 +367,7 @@ MQTT 设计了一套保证消息稳定传输的机制，包括消息应答、存
 
 服务质量是0的时候，MQTT服务器和客户端不会对消息的传输成功进行确认和检查。全看环境是否稳定。
 
-发送一次之后就不管了，不管发送和失败    
+发送一次之后就不管了，不管发送和失败   
 
 ## Qos是1
 
@@ -513,11 +513,11 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
  * @param       无
  * @retval      无
  */
-  static void demo_show_ip(char *buf)
-  {
+    static void demo_show_ip(char *buf)
+    {
     printf("IP: %s\r\n", buf);
     lcd_show_string(60, 151, 128, 16, 16, buf, BLUE);
-  }
+    }
 
 /**
  * @brief       按键0功能，功能测试
@@ -525,8 +525,8 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
  *                              1，已进入透传
  * @retval      无
  */
-  static void demo_key0_fun(uint8_t is_unvarnished)
-  {
+    static void demo_key0_fun(uint8_t is_unvarnished)
+    {
     uint8_t ret;
     
     if (is_unvarnished == 0)
@@ -548,7 +548,7 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
         /* 通过透传，发送信息至TCP Server */
         atk_mw8266d_uart_printf("This ATK-MW8266D TCP Connect Test.\r\n");
     }
-  }
+    }
 
 /**
  * @brief       按键1功能，切换透传模式
@@ -556,8 +556,8 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
  *                              1，已进入透传
  * @retval      无
  */
-  static void demo_key1_fun(uint8_t *is_unvarnished)
-  {
+    static void demo_key1_fun(uint8_t *is_unvarnished)
+    {
     uint8_t ret;
     
     if (*is_unvarnished == 0)
@@ -581,7 +581,7 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
         *is_unvarnished = 0;
         printf("Exit unvarnished!\r\n");
     }
-  }
+    }
 
 /**
  * @brief       进入透传时，将接收自TCP Server的数据发送到串口调试助手
@@ -589,8 +589,8 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
  *                              1，已进入透传
  * @retval      无
  */
-  static void demo_upload_data(uint8_t is_unvarnished)
-  {
+    static void demo_upload_data(uint8_t is_unvarnished)
+    {
     uint8_t *buf;
     
     if (is_unvarnished == 1)
@@ -604,7 +604,7 @@ MQTT 协议允许客户端在“活着”的时候就写好遗嘱，这样一旦
             atk_mw8266d_uart_rx_restart();
         }
     }
-  }
+    }
 
 // /**
 //  * @brief       例程演示入口函数
@@ -880,4 +880,8 @@ busy p...
 
 OK
 ```
+
+
+
+
 
