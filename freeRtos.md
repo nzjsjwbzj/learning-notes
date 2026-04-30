@@ -5199,7 +5199,9 @@ CountSemaphore=xSemaphoreCreateCounting(255,0);
 
 二值信号量适合需要任务同步的场景，互斥信号量适合需要资源管理的场景(拿了信号量才能访问，访问完了释放信号量)。
 
-中断里面最好别用信号量，不是任务，调用任务API可能出问题
+中断中只能去释放（Give）二值信号量或计数信号量，并且必须调用带 FromISR 后缀的专属 API
+
+
 
 
 
@@ -5873,12 +5875,12 @@ int main( void )
 | `vTaskNotifyGiveFromISR()` | 中断中给任务发通知。                                      |
 | `ulTaskNotifyTake()`       | 当前任务等待通知（类似 `xSemaphoreTake()`）。             |
 | `xTaskNotify()`            | 发送通知并可携带一个数值。                                |
-| `xTaskNotifyWait()`        | 等待通知并获取里面的数值。                                |
 | `xTaskNotifyFromISR()`     | 中断中发送通知。                                          |
+| `xTaskNotifyWait()`        | 等待通知并获取里面的数值。                                |
 
 
 
-```
+```c
 BaseType_t xTaskGenericNotify( TaskHandle_t xTaskToNotify, uint32_t ulValue, eNotifyAction eAction, uint32_t *pulPreviousNotificationValue ) PRIVILEGED_FUNCTION;
 
 
